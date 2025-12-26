@@ -43,8 +43,22 @@ document.addEventListener('DOMContentLoaded', function () {
     setCurrentMonthYear();
   }
 
-  function loadData() {
+   function loadData() {
+    const savedState = localStorage.getItem('budgetPlanner');
 
+    if (savedState) {
+      state = JSON.parse(savedState);
+
+      state.transactions.forEach(trans => {
+        trans.date = new Date(trans.date);
+      });
+
+      state.goals.forEach(goal => {
+        goal.date = new Date(goal.date);
+      });
+    }
+  }
 
   init();
 });
+ 
