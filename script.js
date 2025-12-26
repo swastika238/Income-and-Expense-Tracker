@@ -58,7 +58,21 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   }
+ //save data to localstorage
+ function saveData() {
+  const transactionsWithStringDates = state.transactions.map(trans => ({
+    ...trans,
+    date: trans.date.toISOString()
+  }));
 
-  init();
-});
- 
+const goalsWithStringDates=state.goals.map(goal=>({...goal,
+  date:goal.date.toISOString()
+}));
+const StateToSave={
+  ...state,
+  transaction:transactionsWithStringDates,
+  goals:goalsWithStringDates
+};
+localStorage.setItem('budgetPlannerState',JSON.stringify(stateToSave))
+
+}
