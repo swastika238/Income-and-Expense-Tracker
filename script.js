@@ -88,7 +88,71 @@ navItems.classList.add('active');
 const section=navItems.getAttribute('data-section')
 contentSections.forEach(sec=>sec.classList.remove('active'));
 document.getElementById(section).classList.add('active');
+if(section=='transaction'){
+  renderTransactionTable();
+}
+else if(section=='budget'){
+  renderCategories();
+}
+else if(Section=='reports'){
+  renderCharts();
+}
+else if(section=='goals'){
+  rederGoals();
+}
     }
-    )
-  })
+    );
+  });
+addTransactionBtn.addEventListener('click',()=>openModal('transaction'));
+addCategoryBtn.addEventListener('click',()=>
+openModal('category'));
+addGoalBtn.addEventListener('click',()=>openModal("goal"));
+//ModalClose Buttons
+
+closeModalBtns.forEach(btn=>{
+  btn.addEventListener("click",closeModal);
+});
+window.addEventListener('click',(e)=>{
+  if (e.target.classlist.contains('modal'))
+  {
+    closeModal()
+  }
+});
+
+// FormSubmission
+transactionForm.addEventListener('submit',handleTransactionSubmit);
+categoryForm.addEventListener('submit',handleCategorySubmit);
+goalForm.addEventListener('submit',handleGoalSubmit);
+
+//Report periodNavigation
+document.getElementById('prev-month').addEventListener('click',()=>{
+  if (state.currentMonth===0){
+    state.currentMonth=11;
+    state.currentYear--;
+
+
+  }
+  else{
+    state.currentMonth--;
+  }
+  setCurrentMonthYear();
+  renderCharts();
+});
+document.getElementById('transaction-type').addEventListener('change',renderTransactionTable);
+document.getElementById('transaction-category').addEventListener('change', renderTransactionsTable);
+        document.getElementById('transaction-month').addEventListener('change', renderTransactionsTable);
+    }
+
+function toggleTheme(){
+  const body=document.body;
+  if(body.getAttribute('data-theme')=='dark'){
+    body.removeAttribute('data-theme');
+    themeToggle.classList.remove('fa-sun')
+    themeToggle.classList.add("fa-moon")
+  }
+  else{
+    body.setAttribute('data-theme','dark');
+    themeToggle.classList.remove('fa-moon')
+    themeToggle.classList.add('fa-sun');
+  }
 }
