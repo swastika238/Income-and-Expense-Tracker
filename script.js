@@ -87,6 +87,7 @@ navItems.forEach(nav=>nav.classList.remove('active'));
 navItems.classList.add('active');
 const section=navItems.getAttribute('data-section')
 contentSections.forEach(sec=>sec.classList.remove('active'));
+document.getElementById(section).classList.add('active');
     }
     )
   })
