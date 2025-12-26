@@ -76,3 +76,18 @@ const StateToSave={
 localStorage.setItem('budgetPlannerState',JSON.stringify(stateToSave))
 
 }
+function setupEventListeners(){
+  themeToggle.addEventListener('click',toggletheme);
+  //Navigation
+
+  navItems.forEach(item=>{
+    item.addEventListener('click',()=>
+    {
+navItems.forEach(nav=>nav.classList.remove('active'));
+navItems.classList.add('active');
+const section=navItems.getAttribute('data-section')
+contentSections.forEach(sec=>sec.classList.remove('active'));
+    }
+    )
+  })
+}
