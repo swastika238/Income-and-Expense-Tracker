@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Income and Expense Tracker</title>
+  <meta charset="UTF-8">
+  <title>Expense Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-    <div class="container">
-        <header class="app-header">
-            <div class="header-content">
-                <h1>INCOME AND EXPENSE TRACKER</h1>
-                <i class="fa-solid fa-wallet"></i>
-                <p>Take control of your finances</p>
-            </div>
+<div class="dashboard">
+    <aside class="sidebar">
+        <h2>
+        Logoo
+        </h2>
+        <label> Bring data from last</label>
+        <input type="number" value="365">
+        <span>Days</span>
+    </aside>
 
-            <div class="theme-toggle">
-                <i class="fa-solid fa-moon" id="theme-icon"></i>
-            </div>
-        </header>
+
+    <div class="content">
+        <div class="row">
+            <h3>Expense per day</h3>
+          <canvas id="dailychart">
+
+          </canvas>
+
+        </div>
+        <div class="chart">
+            <label> 
+                <h3> Expense Per day</h3>
+            </label>
+        </div>
     </div>
-
-</body>
-</html>
+</div>
